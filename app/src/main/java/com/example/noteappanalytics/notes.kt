@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_notes.*
 class notes : AppCompatActivity() {
     val db = Firebase.firestore
     private lateinit var analytics: FirebaseAnalytics
+    var screenTimeAnalytics = screenTimeAnalytics()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notes)
@@ -92,5 +93,14 @@ class notes : AppCompatActivity() {
             param(FirebaseAnalytics.Param.SCREEN_CLASS,screenClass)
             param(FirebaseAnalytics.Param.SCREEN_NAME,screenName)
         }
+    }
+    override fun onResume() {
+        super.onResume()
+        screenTimeAnalytics.screenTrack("note")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        screenTimeAnalytics.screenTime()
     }
 }

@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_notes.*
 
 class detail : AppCompatActivity() {
     private lateinit var analytics: FirebaseAnalytics
+    var screenTimeAnalytics = screenTimeAnalytics()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
@@ -48,10 +49,14 @@ class detail : AppCompatActivity() {
             param(FirebaseAnalytics.Param.SCREEN_NAME,screenName)
         }
     }
-    fun customEvent(){
-        analytics.logEvent("screenTime"){
-            param("screenName","detail")
-            param("time","MainActivity")
-        }
+    override fun onResume() {
+        super.onResume()
+        screenTimeAnalytics.screenTrack("details")
     }
+
+    override fun onPause() {
+        super.onPause()
+        screenTimeAnalytics.screenTime()
+    }
+
 }
