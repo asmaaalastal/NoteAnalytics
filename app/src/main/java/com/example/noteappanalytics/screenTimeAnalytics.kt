@@ -3,13 +3,16 @@ package com.example.noteappanalytics
 import android.os.Bundle
 import android.util.Log
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 
 class screenTimeAnalytics {
     private lateinit var analytics: FirebaseAnalytics
     private var screen: String? = null
     private var screenTime: Long? = null
     fun screenTrack(screenName: String) {
+        analytics = Firebase.analytics
         screen = screenName
         screenTime = System.currentTimeMillis()
         val params = Bundle().apply {
@@ -21,6 +24,7 @@ class screenTimeAnalytics {
     }
 
     fun screenTime() {
+        analytics = Firebase.analytics
         if (screen != null && screenTime != null) {
             val time = System.currentTimeMillis() - screenTime!!
             storeTimeToFireStore(screen!!, time)
