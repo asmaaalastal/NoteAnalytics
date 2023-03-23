@@ -32,7 +32,7 @@
     <TextView
         android:id="@+id/nameNote"
         android:layout_width="wrap_content"
-        android:layout_height="49dp"
+        android:layout_height="wrap_content"
         android:hint="Name"
         android:textColor="@color/purple_700"
         android:textSize="26dp"
@@ -47,7 +47,7 @@
     <TextView
         android:id="@+id/descriptionNote"
         android:layout_width="wrap_content"
-        android:layout_height="23dp"
+        android:layout_height="wrap_content"
         android:hint="Description"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,7 +60,7 @@
     <TextView
         android:id="@+id/lettersNote"
         android:layout_width="wrap_content"
-        android:layout_height="23dp"
+        android:layout_height="wrap_content"
         android:hint="0"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
